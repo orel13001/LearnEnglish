@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearnEnglish.WPF"
         mc:Ignorable="d"
-        Title="Главное окно" Height="200" Width="400">
-
+        Title="Главное окно" Height="200" Width="400"
+        xmlns:vm="clr-namespace:LearnEnglish.WPF.ViewModels"
+        
+        >
+    <Window.DataContext>
+        <vm:MainViewModels/>
+    </Window.DataContext>
     <WrapPanel 
         TextElement.FontSize="20"
         TextElement.FontFamily="TimesNewRoman"
@@ -14,14 +19,18 @@
         HorizontalAlignment="Center"
         VerticalAlignment="Center">
         <Button Width="150" Height="100"
-                Margin="20, 20, 20, 20">
+                Margin="20, 20, 20, 20"
+                Command="{Binding AddToDictionary}"
+                >
             <TextBlock Text="Добавить в словарь" 
                        TextWrapping="Wrap"
                        TextAlignment="Center">
             </TextBlock>
         </Button>
         <Button Width="150" Height="100"
-                Margin="0, 20, 20, 20">
+                Margin="0, 20, 20, 20"
+                Command="{Binding Repetition}"
+                >
             <TextBlock Text="Повторять" 
                        TextWrapping="Wrap"
                        TextAlignment="Center">

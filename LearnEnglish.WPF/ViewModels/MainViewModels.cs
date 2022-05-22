@@ -10,8 +10,6 @@ namespace LearnEnglish.WPF.ViewModels
 
         public MainViewModels()
         {
-
-
             #region Commands
             AddToDictionary = new LambdaCommand(OnAddToDictionaryExecut, CanAddToDictionaryExecuted);
             Repetition = new LambdaCommand(OnRepetitionExecut, CanRepetitionExecuted);
