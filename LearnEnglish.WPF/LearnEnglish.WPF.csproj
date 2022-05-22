@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Sources\Images\Left.png" />
+    <None Remove="Sources\Images\play.png" />
+    <None Remove="Sources\Images\Right.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\EntityFramework\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -23,6 +29,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Sources\Images\Left.png" />
+    <Resource Include="Sources\Images\play.png" />
+    <Resource Include="Sources\Images\Right.png" />
   </ItemGroup>
 
 </Project>
