@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Models\EntityFramework\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
