@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearnEnglish.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Главное окно" Height="200" Width="400">
 
-    </Grid>
+    <WrapPanel 
+        TextElement.FontSize="20"
+        TextElement.FontFamily="TimesNewRoman"
+        TextElement.FontWeight="Bold"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <Button Width="150" Height="100"
+                Margin="20, 20, 20, 20">
+            <TextBlock Text="Добавить в словарь" 
+                       TextWrapping="Wrap"
+                       TextAlignment="Center">
+            </TextBlock>
+        </Button>
+        <Button Width="150" Height="100"
+                Margin="0, 20, 20, 20">
+            <TextBlock Text="Повторять" 
+                       TextWrapping="Wrap"
+                       TextAlignment="Center">
+            </TextBlock>
+        </Button>
+    </WrapPanel>
+
 </Window>
