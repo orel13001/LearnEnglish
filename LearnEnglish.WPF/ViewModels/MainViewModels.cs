@@ -1,11 +1,24 @@
 ﻿using System;
 using System.Windows.Input;
+using LearnEnglish.WPF.Infrastructure.Command.Base;
 using LearnEnglish.WPF.Views.Windows;
 
 namespace LearnEnglish.WPF.ViewModels
 {
     public class MainViewModels
     {
+
+        public MainViewModels()
+        {
+
+
+            #region Commands
+            AddToDictionary = new LambdaCommand(OnAddToDictionaryExecut, CanAddToDictionaryExecuted);
+            Repetition = new LambdaCommand(OnRepetitionExecut, CanRepetitionExecuted);
+            
+            #endregion
+        }
+
         #region Commands
 
         #region Добавление в словарь
