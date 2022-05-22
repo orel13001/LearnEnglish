@@ -5,8 +5,121 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearnEnglish.WPF.Views.Windows"
         mc:Ignorable="d"
-        Title="RepetitionWindow" Height="450" Width="800">
-    <Grid>
+        Title="Повторение" Height="730" Width="800"
+        TextBlock.FontFamily="TimesNewRoman">
+
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            
+        </Menu>
         
-    </Grid>
+        <StatusBar DockPanel.Dock="Bottom">
+            
+        </StatusBar>
+        
+        <TabControl DockPanel.Dock="Bottom"
+                    TextBlock.FontSize="15"
+                    TextBlock.FontWeight="DemiBold">
+            <TabItem Header="Слова"
+                     >
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Auto">                    
+                    <StackPanel Orientation="Vertical">
+                        <DockPanel>                            
+                            <Button 
+                                    DockPanel.Dock="Left"
+                                    Width="100" Height="400"
+                                    Margin="10,0,0,0"
+                                    >
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                                </Button.BorderBrush>
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                                </Button.Background>
+                                <Image Source="/Sources/Images/Left.png"
+                                       Stretch="Fill"/>
+                            </Button>
+                            <Button DockPanel.Dock="Right"
+                                    Width="100" Height="400"
+                                    Margin="10,0,0,0"
+                                    >
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                                </Button.BorderBrush>
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                                </Button.Background>
+                                <Image Source="/Sources/Images/Right.png"
+                                       Stretch="Fill"/>
+                            </Button>
+                            <Image  Grid.Column="1"
+                                    Source="{Binding }"
+                                    Width="500"
+                                    Height="400"
+                                   >
+                            </Image>
+                        </DockPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Text="daughter"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontSize="60"
+                                       FontFamily="Comic Sans MS"
+                                       >                            
+                            </TextBlock>
+                            <Button Width="50" Height="50"
+                                    Margin="10,0,0,0"
+                                    >
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                                </Button.BorderBrush>
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                                </Button.Background>
+                                <Image Source="/Sources/Images/play.png"
+                                       Stretch="Fill"/>
+                            </Button>
+                        </StackPanel>
+                        <TextBlock Text="['dɔːtə]"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="30"
+                                   FontFamily="Calibri Light"
+                                   >
+                        </TextBlock>
+                        <TextBlock Text="Дочь"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="50"
+                                   FontFamily="Comic Sans MS"
+                                   
+                                   >
+                        </TextBlock>
+                        <Button Width="250" Height="60"
+                                Margin="0,10,0,0">
+                            <TextBlock  Text="Ответ" 
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Center"
+                                        FontSize="40">
+                                
+                            </TextBlock>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Выражения">
+                <Grid Background="White"/>
+            </TabItem>
+            <TabItem Header="Неправильные глаголы">
+                <Grid Background="White"/>
+            </TabItem>
+        </TabControl>
+
+
+    </DockPanel>
+
+
 </Window>
