@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearnEnglish.WPF.Views.Windows"
         mc:Ignorable="d"
-        Title="Повторение" Height="730" Width="800"
-        TextBlock.FontFamily="TimesNewRoman">
-
+        Title="Повторение" Height="750" Width="800"
+        TextBlock.FontFamily="TimesNewRoman"
+        xmlns:vm="clr-namespace:LearnEnglish.WPF.ViewModels"
+        >
+    <Window.DataContext>
+        <vm:RepetitionViewModel/>
+    </Window.DataContext>
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -26,11 +30,17 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Auto">                    
                     <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox Width="150" Height="30">
+                                
+                            </ComboBox>
+                        </StackPanel>                       
                         <DockPanel>                            
                             <Button 
                                     DockPanel.Dock="Left"
                                     Width="100" Height="400"
                                     Margin="10,0,0,0"
+                                    Command="{Binding Previous}"
                                     >
                                 <Button.BorderBrush>
                                     <SolidColorBrush Color="#FF707070" Opacity="0"/>
@@ -44,6 +54,7 @@
                             <Button DockPanel.Dock="Right"
                                     Width="100" Height="400"
                                     Margin="10,0,0,0"
+                                    Command="{Binding Next}"
                                     >
                                 <Button.BorderBrush>
                                     <SolidColorBrush Color="#FF707070" Opacity="0"/>
@@ -99,7 +110,9 @@
                                    >
                         </TextBlock>
                         <Button Width="250" Height="60"
-                                Margin="0,10,0,0">
+                                Margin="0,10,0,0"
+                                Command="{Binding Translate}"
+                                >
                             <TextBlock  Text="Ответ" 
                                         TextWrapping="Wrap"
                                         TextAlignment="Center"
