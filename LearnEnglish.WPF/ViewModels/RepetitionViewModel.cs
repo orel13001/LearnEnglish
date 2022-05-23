@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows;
 using LearnEnglish.WPF.Infrastructure.Command.Base;
+using LearnEnglish.WPF.Services;
 
 namespace LearnEnglish.WPF.ViewModels
 {
@@ -128,7 +129,7 @@ namespace LearnEnglish.WPF.ViewModels
             Previous = new LambdaCommand(OnPreviousExecut, CanPreviousExecuted);
             Next = new LambdaCommand(OnNextExecut, CanNextExecuted);
 
-            LessonNumber = 
+            LessonNumber = GetDataFromDB.GetWordNumberLesson();
         }
         #endregion
     }

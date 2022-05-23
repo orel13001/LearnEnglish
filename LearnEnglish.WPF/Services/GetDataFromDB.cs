@@ -9,7 +9,7 @@ namespace LearnEnglish.WPF.Services
 {
     public class GetDataFromDB
     {
-        public ObservableCollection<int> GetWordNumberLesson()
+        public static ObservableCollection<int> GetWordNumberLesson()
         {
             ObservableCollection<int> numberLesson = new ObservableCollection<int>();
             using (LearnEnglishContext db = new LearnEnglishContext())
@@ -19,7 +19,7 @@ namespace LearnEnglish.WPF.Services
             return numberLesson;
         }
 
-        public ObservableCollection<DictionaryWord> GetWordForNumberLesson(int numberLesson)
+        public static ObservableCollection<DictionaryWord> GetWordForNumberLesson(int numberLesson)
         {
             ObservableCollection<DictionaryWord> words = new ObservableCollection<DictionaryWord>();
             using (LearnEnglishContext db = new LearnEnglishContext())
