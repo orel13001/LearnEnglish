@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using LearnEnglish.WPF.Models.EntityFramework;
 using System.Linq;
 using System.Text;
@@ -31,17 +32,16 @@ namespace LearnEnglish.WPF.Services
         }
 
 
-        public static ObservableCollection<LessonWord> GetLessonWord()
+        public static ObservableCollection<List<DictionaryWord>> GetLessonWord()
         {
-            ObservableCollection<LessonWord> lessonWord = new ObservableCollection<LessonWord>();
+            ObservableCollection<List<DictionaryWord>> lessonWord = new ObservableCollection<List<DictionaryWord>>();
             using (LearnEnglishContext db = new LearnEnglishContext())
             {
-                lessonWord = new ObservableCollection<LessonWord>(
-                    db.DictionaryWords.Select(o => new LessonWord
-                    {
-                        LessonItems = db.DictionaryWords.Where(n => n.Lesson == o.Lesson).ToList(),
-                    })
-                    );
+                List<int> numberLessons = db.DictionaryWords.Select(o => o.Lesson).Distinct().ToList();
+                foreach(int numberLesson in numberLessons)
+                {
+                    lessonWord.Add(db.DictionaryWords.Select(o => db.DictionaryWords.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!);
+                }
             }
             return lessonWord;
         }

@@ -31,7 +31,9 @@
                               HorizontalScrollBarVisibility="Auto">                    
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox Width="150" Height="30">
+                            <ComboBox Width="150" Height="30"
+                                      ItemsSource="{Binding LessonWord}"
+                                      SelectedItem="{Binding Words, Mode=TwoWay}">
                                 
                             </ComboBox>
                         </StackPanel>                       
@@ -74,7 +76,7 @@
                         </DockPanel>
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Center">
-                            <TextBlock Text="daughter"
+                            <TextBlock Text="{Binding Word.English, Mode=TwoWay}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        FontSize="60"
@@ -94,14 +96,14 @@
                                        Stretch="Fill"/>
                             </Button>
                         </StackPanel>
-                        <TextBlock Text="['dɔːtə]"
+                        <TextBlock Text="{Binding Word.Transcription, Mode=TwoWay}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    FontSize="30"
                                    FontFamily="Calibri Light"
                                    >
                         </TextBlock>
-                        <TextBlock Text="Дочь"
+                        <TextBlock Text="{Binding Word.Russian1, Mode=TwoWay}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    FontSize="50"

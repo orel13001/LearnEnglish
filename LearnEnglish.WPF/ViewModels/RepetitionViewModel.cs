@@ -1,11 +1,13 @@
 ﻿using System;
 using LearnEnglish.WPF.Models.EntityFramework;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Windows.Input;
 using System.Windows;
 using LearnEnglish.WPF.Infrastructure.Command.Base;
 using LearnEnglish.WPF.Services;
 using LearnEnglish.WPF.Models;
+
 
 namespace LearnEnglish.WPF.ViewModels
 {
@@ -15,29 +17,33 @@ namespace LearnEnglish.WPF.ViewModels
         private static Random random = new Random();
         private int Select
         {
-            get => Words.IndexOf(Word);
+            get => Words.IndexOf(Word) >=0 ? Words.IndexOf(Word) : 0;
         }
 
         private bool _rnd;
         private DictionaryWord _word;
-        private ObservableCollection<DictionaryWord> _words;
-        private ObservableCollection<LessonWord> _lessonWord;
+        private List<DictionaryWord> _words;
+        private ObservableCollection<List<DictionaryWord>> _lessonWord;
         public DictionaryWord Word
         {
             get => _word;
             set => Set(ref _word, value);
         }
-        public ObservableCollection<DictionaryWord> Words
+        public List<DictionaryWord> Words
         {
             get => _words;
-            set => Set(ref _words, value);
+            set
+            {
+                Set(ref _words, value);
+                Word = Words[0];
+            }
         }
         public bool Rnd
         {
             get => _rnd;
             set => Set(ref _rnd, value);
         }
-        public ObservableCollection<LessonWord> LessonWord
+        public ObservableCollection<List<DictionaryWord>> LessonWord
         {
             get => _lessonWord;
             set => Set(ref _lessonWord, value);
@@ -133,6 +139,8 @@ namespace LearnEnglish.WPF.ViewModels
             //LessonNumber = GetDataFromDB.GetWordNumberLesson();
 
             LessonWord = GetDataFromDB.GetLessonWord();
+            Words = LessonWord[0];
+            Word = Words[0];
 
         }
         #endregion
