@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows;
 using LearnEnglish.WPF.Infrastructure.Command.Base;
 using LearnEnglish.WPF.Services;
+using LearnEnglish.WPF.Models;
 
 namespace LearnEnglish.WPF.ViewModels
 {
@@ -20,7 +21,7 @@ namespace LearnEnglish.WPF.ViewModels
         private bool _rnd;
         private DictionaryWord _word;
         private ObservableCollection<DictionaryWord> _words;
-        private ObservableCollection<int> _lessonNumber;
+        private ObservableCollection<LessonWord> _lessonWord;
         public DictionaryWord Word
         {
             get => _word;
@@ -36,10 +37,10 @@ namespace LearnEnglish.WPF.ViewModels
             get => _rnd;
             set => Set(ref _rnd, value);
         }
-        public ObservableCollection<int> LessonNumber
+        public ObservableCollection<LessonWord> LessonWord
         {
-            get => _lessonNumber;
-            set => Set(ref _lessonNumber, value);
+            get => _lessonWord;
+            set => Set(ref _lessonWord, value);
         }
         public Visibility VisibilityTranslate  { get; set; }
 
@@ -129,7 +130,10 @@ namespace LearnEnglish.WPF.ViewModels
             Previous = new LambdaCommand(OnPreviousExecut, CanPreviousExecuted);
             Next = new LambdaCommand(OnNextExecut, CanNextExecuted);
 
-            LessonNumber = GetDataFromDB.GetWordNumberLesson();
+            //LessonNumber = GetDataFromDB.GetWordNumberLesson();
+
+            LessonWord = GetDataFromDB.GetLessonWord();
+
         }
         #endregion
     }

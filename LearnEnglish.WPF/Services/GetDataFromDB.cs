@@ -4,6 +4,7 @@ using LearnEnglish.WPF.Models.EntityFramework;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LearnEnglish.WPF.Models;
 
 namespace LearnEnglish.WPF.Services
 {
@@ -27,6 +28,22 @@ namespace LearnEnglish.WPF.Services
                 words = new ObservableCollection<DictionaryWord>(db.DictionaryWords.Where(o => o.Lesson == numberLesson));
             }
             return words;
+        }
+
+
+        public static ObservableCollection<LessonWord> GetLessonWord()
+        {
+            ObservableCollection<LessonWord> lessonWord = new ObservableCollection<LessonWord>();
+            using (LearnEnglishContext db = new LearnEnglishContext())
+            {
+                lessonWord = new ObservableCollection<LessonWord>(
+                    db.DictionaryWords.Select(o => new LessonWord
+                    {
+                        LessonItems = db.DictionaryWords.Where(n => n.Lesson == o.Lesson).ToList(),
+                    })
+                    );
+            }
+            return lessonWord;
         }
     }
 }
