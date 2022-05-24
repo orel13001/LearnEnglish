@@ -48,7 +48,7 @@ namespace LearnEnglish.WPF.ViewModels
             get => _lessonWord;
             set => Set(ref _lessonWord, value);
         }
-        public Visibility VisibilityTranslate  { get; set; }
+        public Visibility VisibilityTranslate { get; set; } = Visibility.Hidden;
 
 
         #region Commands

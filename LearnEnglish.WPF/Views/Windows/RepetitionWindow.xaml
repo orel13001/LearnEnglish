@@ -108,7 +108,7 @@
                                    HorizontalAlignment="Center"
                                    FontSize="50"
                                    FontFamily="Comic Sans MS"
-                                   
+                                   Visibility="{Binding VisibilityTranslate, Mode=TwoWay}"
                                    >
                         </TextBlock>
                         <Button Width="250" Height="60"
