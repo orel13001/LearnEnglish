@@ -24,6 +24,8 @@ namespace LearnEnglish.WPF.ViewModels
         private DictionaryWord _word;
         private List<DictionaryWord> _words;
         private ObservableCollection<List<DictionaryWord>> _lessonWord;
+        public Visibility _visibilityTranslate = Visibility.Hidden;
+
         public DictionaryWord Word
         {
             get => _word;
@@ -48,8 +50,11 @@ namespace LearnEnglish.WPF.ViewModels
             get => _lessonWord;
             set => Set(ref _lessonWord, value);
         }
-        public Visibility VisibilityTranslate { get; set; } = Visibility.Hidden;
-
+        public Visibility VisibilityTranslate
+        {
+            get => _visibilityTranslate;
+            set => Set(ref _visibilityTranslate, value);
+        }
 
         #region Commands
 
