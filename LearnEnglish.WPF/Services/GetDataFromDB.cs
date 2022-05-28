@@ -12,15 +12,20 @@ namespace LearnEnglish.WPF.Services
     public class GetDataFromDB
     {
       
-        public static ObservableCollection<List<DictionaryWord>> GetLessonWord()
+        public static ObservableCollection<Lesson> GetLessonWord()
         {
-            ObservableCollection<List<DictionaryWord>> lessonWord = new ObservableCollection<List<DictionaryWord>>();
+            ObservableCollection<Lesson> lessonWord = new ObservableCollection<Lesson>();
             using (LearnEnglishContext db = new LearnEnglishContext())
             {
                 List<int> numberLessons = db.DictionaryWords.Select(o => o.Lesson).Distinct().ToList();
                 foreach(int numberLesson in numberLessons)
                 {
-                    lessonWord.Add(db.DictionaryWords.Select(o => db.DictionaryWords.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!);
+                    lessonWord.Add(new Lesson
+                    {
+                        Words = db.DictionaryWords.Select(o => db.DictionaryWords.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!,
+                        LessonNumber = numberLesson
+                    });
+
                 }
             }
             return lessonWord;
