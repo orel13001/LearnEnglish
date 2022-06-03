@@ -7,7 +7,8 @@ using System.Windows;
 using LearnEnglish.WPF.Infrastructure.Command.Base;
 using LearnEnglish.WPF.Services;
 using LearnEnglish.WPF.Models;
-
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace LearnEnglish.WPF.ViewModels
 {
@@ -24,13 +25,22 @@ namespace LearnEnglish.WPF.ViewModels
         private DictionaryWord _word;
         private Lesson _les;
         private ObservableCollection<Lesson> _lessonWord;
+        private ImageSource _pic;
+
         public Visibility _visibilityTranslate = Visibility.Hidden;
 
         public DictionaryWord Word
         {
             get => _word;
-            set => Set(ref _word, value);
+            set
+            {
+                Set(ref _word, value);
+                Pic = GetPicture();
+            }
         }
+
+        
+
         public Lesson Les
         {
             get => _les;
@@ -54,6 +64,12 @@ namespace LearnEnglish.WPF.ViewModels
         {
             get => _visibilityTranslate;
             set => Set(ref _visibilityTranslate, value);
+        }
+
+        public ImageSource Pic
+        {
+            get => _pic;
+            set => Set(ref _pic, value);
         }
 
         #region Commands
@@ -131,6 +147,16 @@ namespace LearnEnglish.WPF.ViewModels
         private void ShowTranslate()
         {
             VisibilityTranslate = Visibility.Visible;
+        }
+
+        private ImageSource GetPicture()
+        {
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Word.Pictures, UriKind.Relative);
+            bitmap.EndInit();
+            return bitmap;
+
         }
         #endregion
 
