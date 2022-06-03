@@ -167,9 +167,9 @@ namespace LearnEnglish.WPF.ViewModels
             Previous = new LambdaCommand(OnPreviousExecut, CanPreviousExecuted);
             Next = new LambdaCommand(OnNextExecut, CanNextExecuted);
 
-            //LessonNumber = GetDataFromDB.GetWordNumberLesson();
 
-            LessonWord = GetDataFromDB.GetLessonWord();
+            //LessonWord = GetDataFromDB.GetLessonWord();
+            LessonWord = GetDataFromDB.GetLessonWord_Test();
             Les = LessonWord[0];
             Word = Les.Words[0];
 
