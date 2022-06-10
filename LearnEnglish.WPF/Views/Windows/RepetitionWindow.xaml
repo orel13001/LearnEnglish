@@ -75,7 +75,7 @@
                                        Stretch="Fill"/>
                             </Button>
                             <Image  Grid.Column="1"
-                                    Source="pack://application:,,,/LearnEanglish;resource/Sources/Pictures/car.jpg"
+                                    Source="{Binding Word.Pictures}"
                                     Width="500"
                                     Height="400"
                                    >

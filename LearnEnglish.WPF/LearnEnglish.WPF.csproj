@@ -11,6 +11,9 @@
     <None Remove="Sources\Images\Left.png" />
     <None Remove="Sources\Images\play.png" />
     <None Remove="Sources\Images\Right.png" />
+    <None Remove="Sources\pictures\car.jpg" />
+    <None Remove="Sources\pictures\cat.jpg" />
+    <None Remove="Sources\pictures\dog.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,9 +34,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Sources\Images\Left.png" />
-    <Resource Include="Sources\Images\play.png" />
-    <Resource Include="Sources\Images\Right.png" />
+    <Resource Include="Sources\Images\Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Sources\Images\play.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Sources\Images\Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Sources\pictures\pic.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

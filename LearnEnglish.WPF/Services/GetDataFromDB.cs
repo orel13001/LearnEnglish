@@ -7,12 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using LearnEnglish.WPF.Models;
 using LearnEnglish.WPF.Models.Test;
+using System.Reflection;
 
 namespace LearnEnglish.WPF.Services
 {
     public class GetDataFromDB
     {
-      
+        private static readonly string _currentDirectory;
+        static GetDataFromDB()
+        {
+            _currentDirectory = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)!;
+        }
         public static ObservableCollection<Lesson> GetLessonWord()
         {
             ObservableCollection<Lesson> lessonWord = new ObservableCollection<Lesson>();
@@ -21,9 +26,14 @@ namespace LearnEnglish.WPF.Services
                 List<int> numberLessons = db.DictionaryWords.Select(o => o.Lesson).Distinct().ToList();
                 foreach(int numberLesson in numberLessons)
                 {
+                    var words = db.DictionaryWords.Select(o => db.DictionaryWords.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!;
+                    foreach (var word in words)
+                    {
+                        word.Pictures = new StringBuilder(_currentDirectory ).Append(word.Pictures).ToString();
+                    }
                     lessonWord.Add(new Lesson
                     {
-                        Words = db.DictionaryWords.Select(o => db.DictionaryWords.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!,
+                        Words = words,
                         LessonNumber = numberLesson
                     });
 
@@ -32,23 +42,23 @@ namespace LearnEnglish.WPF.Services
             return lessonWord;
         }
 
-        public static ObservableCollection<Lesson> GetLessonWord_Test()
-        {
-            List<DictionaryWord> testData = TestData.testData;
-            ObservableCollection<Lesson> lessonWord = new ObservableCollection<Lesson>();
+        //public static ObservableCollection<Lesson> GetLessonWord_Test()
+        //{
+        //    List<DictionaryWord> testData = TestData.testData;
+        //    ObservableCollection<Lesson> lessonWord = new ObservableCollection<Lesson>();
             
-                List<int> numberLessons = testData.Select(o => o.Lesson).Distinct().ToList();
-                foreach (int numberLesson in numberLessons)
-                {
-                    lessonWord.Add(new Lesson
-                    {
-                        Words = testData.Select(o => testData.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!,
-                        LessonNumber = numberLesson
-                    });
+        //        List<int> numberLessons = testData.Select(o => o.Lesson).Distinct().ToList();
+        //        foreach (int numberLesson in numberLessons)
+        //        {
+        //            lessonWord.Add(new Lesson
+        //            {
+        //                Words = testData.Select(o => testData.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!,
+        //                LessonNumber = numberLesson
+        //            });
 
-                }
+        //        }
             
-            return lessonWord;
-        }
+        //    return lessonWord;
+        //}
     }
 }

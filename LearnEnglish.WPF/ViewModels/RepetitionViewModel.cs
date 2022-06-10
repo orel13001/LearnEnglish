@@ -169,7 +169,7 @@ namespace LearnEnglish.WPF.ViewModels
 
 
             //LessonWord = GetDataFromDB.GetLessonWord();
-            LessonWord = GetDataFromDB.GetLessonWord_Test();
+            LessonWord = GetDataFromDB.GetLessonWord();
             Les = LessonWord[0];
             Word = Les.Words[0];
 
