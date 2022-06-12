@@ -9,13 +9,14 @@ using LearnEnglish.WPF.Services;
 using LearnEnglish.WPF.Models;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.Reflection;
 
 namespace LearnEnglish.WPF.ViewModels
 {
     public class RepetitionViewModel : ViewModels.Base.ViewModel
     {
-
-        private static Random random = new Random();
+        private static MediaPlayer _mediaPlayer = new MediaPlayer();
+        private static Random _random = new Random();
         private int Select
         {
             get => Les.Words.IndexOf(Word) >=0 ? Les.Words.IndexOf(Word) : 0;
@@ -35,7 +36,7 @@ namespace LearnEnglish.WPF.ViewModels
             set
             {
                 Set(ref _word, value);
-                Pic = GetPicture();
+                //Pic = GetPicture();
             }
         }
 
@@ -66,11 +67,11 @@ namespace LearnEnglish.WPF.ViewModels
             set => Set(ref _visibilityTranslate, value);
         }
 
-        public ImageSource Pic
-        {
-            get => _pic;
-            set => Set(ref _pic, value);
-        }
+        //public ImageSource Pic
+        //{
+        //    get => _pic;
+        //    set => Set(ref _pic, value);
+        //}
 
         #region Commands
 
@@ -81,7 +82,7 @@ namespace LearnEnglish.WPF.ViewModels
             if (Word != null)
             {
                 if(Rnd)
-                    Word = Les.Words[random.Next(Les.Words.Count)];
+                    Word = Les.Words[_random.Next(Les.Words.Count)];
                 else
                 {
                     
@@ -110,7 +111,7 @@ namespace LearnEnglish.WPF.ViewModels
             if (Word != null)
             {
                 if (Rnd)
-                    Word = Les.Words[random.Next(Les.Words.Count)];
+                    Word = Les.Words[_random.Next(Les.Words.Count)];
                 else
                 {
 
@@ -135,7 +136,13 @@ namespace LearnEnglish.WPF.ViewModels
         #region Перевод
         public ICommand Translate { get; }
         private void OnTranslateExecut(object p) => ShowTranslate();        
-        private bool CanTranslateExecuted(object p) => true;       
+        private bool CanTranslateExecuted(object p) => true;
+        #endregion
+
+        #region Проиизношение
+        public ICommand Say { get; }
+        private void OnSayExecut(object p) => SayTranscription();
+        private bool CanSayExecuted(object p) => true;
         #endregion
         #endregion
 
@@ -149,14 +156,24 @@ namespace LearnEnglish.WPF.ViewModels
             VisibilityTranslate = Visibility.Visible;
         }
 
-        private ImageSource GetPicture()
-        {
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(Word.Pictures, UriKind.Relative);
-            bitmap.EndInit();
-            return bitmap;
+        //private ImageSource GetPicture()
+        //{
+        //    BitmapImage bitmap = new BitmapImage();
+        //    bitmap.BeginInit();
+        //    bitmap.UriSource = new Uri(Word.Pictures, UriKind.Relative);
+        //    bitmap.EndInit();
+        //    return bitmap;
 
+        //}
+
+
+        private void SayTranscription()
+        {
+            string path = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!;
+            string file = Word.Vois.Replace(@"/", @"\");
+            string all_path = path + file;
+            _mediaPlayer.Open(new Uri(all_path, UriKind.Absolute));
+            _mediaPlayer.Play();
         }
         #endregion
 
@@ -166,6 +183,7 @@ namespace LearnEnglish.WPF.ViewModels
             Translate = new LambdaCommand(OnTranslateExecut, CanTranslateExecuted);
             Previous = new LambdaCommand(OnPreviousExecut, CanPreviousExecuted);
             Next = new LambdaCommand(OnNextExecut, CanNextExecuted);
+            Say = new LambdaCommand(OnSayExecut, CanSayExecuted);
 
 
             //LessonWord = GetDataFromDB.GetLessonWord();

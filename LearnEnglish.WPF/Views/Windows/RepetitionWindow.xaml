@@ -92,6 +92,7 @@
                             </TextBlock>
                             <Button Width="50" Height="50"
                                     Margin="10,0,0,0"
+                                    Command="{Binding Say}"
                                     >
                                 <Button.BorderBrush>
                                     <SolidColorBrush Color="#FF707070" Opacity="0"/>
