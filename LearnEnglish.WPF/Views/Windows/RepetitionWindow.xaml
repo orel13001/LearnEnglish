@@ -57,6 +57,20 @@
                                 <Image Source="/Sources/Images/Mix.png"
                                        Stretch="Fill"/>
                             </ToggleButton>
+                            <ToggleButton 
+                                Width="30"
+                                Margin="10,0,0,0"
+                                IsChecked="{Binding RusEng, Mode=TwoWay}"
+                                >
+                                <ToggleButton.BorderBrush >
+                                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                                </ToggleButton.BorderBrush>
+                                <ToggleButton.Background>
+                                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                                </ToggleButton.Background>
+                                <Image Source="/Sources/Images/Translate.jpg"
+                                       Stretch="Fill"/>
+                            </ToggleButton>
                         </StackPanel>                       
                         <DockPanel>                            
                             <Button 
@@ -96,12 +110,14 @@
                             </Image>
                         </DockPanel>
                         <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center">
+                                    HorizontalAlignment="Center"
+                                    Visibility="{Binding VisibleEng, Mode=TwoWay}"
+                                    >
                             <TextBlock Text="{Binding Word.English, Mode=TwoWay}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        FontSize="60"
-                                       FontFamily="Comic Sans MS"
+                                       FontFamily="Comic Sans MS"                                       
                                        >                            
                             </TextBlock>
                             <Button Width="50" Height="50"
@@ -123,6 +139,7 @@
                                    HorizontalAlignment="Center"
                                    FontSize="30"
                                    FontFamily="Calibri Light"
+                                   Visibility="{Binding VisibleEng, Mode=TwoWay}"
                                    >
                         </TextBlock>
                         <TextBlock Text="{Binding Word.Russian1, Mode=TwoWay}"
@@ -130,7 +147,7 @@
                                    HorizontalAlignment="Center"
                                    FontSize="50"
                                    FontFamily="Comic Sans MS"
-                                   Visibility="{Binding VisibilityTranslate, Mode=TwoWay}"
+                                   Visibility="{Binding VisibleRu, Mode=TwoWay}"
                                    >
                         </TextBlock>
                         <Button Width="250" Height="60"

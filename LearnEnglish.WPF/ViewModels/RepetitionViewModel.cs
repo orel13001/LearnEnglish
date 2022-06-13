@@ -20,11 +20,14 @@ namespace LearnEnglish.WPF.ViewModels
         }
 
         private bool _mix;
+        private bool _rusEng;
         private DictionaryWord _word;
         private Lesson _les;
         private ObservableCollection<Lesson> _lessonWord;
 
-        public Visibility _visibilityTranslate = Visibility.Hidden;
+        //private bool _visibilityTranslate = false;
+        private Visibility _visibleEng = Visibility.Visible;
+        private Visibility _visibleRu = Visibility.Hidden;
 
         public DictionaryWord Word
         {
@@ -33,9 +36,7 @@ namespace LearnEnglish.WPF.ViewModels
             {
                 Set(ref _word, value);
             }
-        }
-
-        
+        }        
 
         public Lesson Les
         {
@@ -51,15 +52,43 @@ namespace LearnEnglish.WPF.ViewModels
             get => _mix;
             set => Set(ref _mix, value);
         }
+        public bool RusEng
+        {
+            get => _rusEng;
+            set
+            {
+                Set(ref _rusEng, value);
+                if (RusEng)
+                {
+                    VisibleEng = Visibility.Hidden;
+                    VisibleRu = Visibility.Visible;
+                }
+                else
+                {
+                    VisibleRu = Visibility.Hidden;
+                    VisibleEng = Visibility.Visible;
+                }
+            }
+        }
         public ObservableCollection<Lesson> LessonWord
         {
             get => _lessonWord;
             set => Set(ref _lessonWord, value);
         }
-        public Visibility VisibilityTranslate
+        //public bool VisibilityTranslate
+        //{
+        //    get => _visibilityTranslate;
+        //    set => Set(ref _visibilityTranslate, value);
+        //}
+        public Visibility VisibleEng
         {
-            get => _visibilityTranslate;
-            set => Set(ref _visibilityTranslate, value);
+            get => _visibleEng;
+            set => Set(ref _visibleEng, value);
+        }
+        public Visibility VisibleRu
+        {
+            get => _visibleRu;
+            set => Set(ref _visibleRu, value);
         }
 
         #region Commands
@@ -138,11 +167,17 @@ namespace LearnEnglish.WPF.ViewModels
         #region Методы
         private void HiddenTranslate()
         {
-            VisibilityTranslate = Visibility.Hidden;
+            if(RusEng)
+                VisibleEng = Visibility.Hidden;
+            else
+                VisibleRu = Visibility.Hidden;
         }
         private void ShowTranslate()
         {
-            VisibilityTranslate = Visibility.Visible;
+            if (RusEng)               
+                VisibleEng = Visibility.Visible;
+            else
+                VisibleRu = Visibility.Visible;
         }
 
 
