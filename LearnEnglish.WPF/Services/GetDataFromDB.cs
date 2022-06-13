@@ -29,7 +29,8 @@ namespace LearnEnglish.WPF.Services
                     var words = db.DictionaryWords.Select(o => db.DictionaryWords.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!;
                     foreach (var word in words)
                     {
-                        word.Pictures = new StringBuilder(_currentDirectory ).Append(word.Pictures).ToString();
+                        word.Pictures = new StringBuilder(_currentDirectory).Append(word.Pictures).ToString();
+                        word.Vois = new StringBuilder(_currentDirectory).Append(word.Vois).ToString();
                     }
                     lessonWord.Add(new Lesson
                     {
@@ -42,23 +43,5 @@ namespace LearnEnglish.WPF.Services
             return lessonWord;
         }
 
-        //public static ObservableCollection<Lesson> GetLessonWord_Test()
-        //{
-        //    List<DictionaryWord> testData = TestData.testData;
-        //    ObservableCollection<Lesson> lessonWord = new ObservableCollection<Lesson>();
-            
-        //        List<int> numberLessons = testData.Select(o => o.Lesson).Distinct().ToList();
-        //        foreach (int numberLesson in numberLessons)
-        //        {
-        //            lessonWord.Add(new Lesson
-        //            {
-        //                Words = testData.Select(o => testData.Where(n => n.Lesson == numberLesson).ToList()).FirstOrDefault()!,
-        //                LessonNumber = numberLesson
-        //            });
-
-        //        }
-            
-        //    return lessonWord;
-        //}
     }
 }
