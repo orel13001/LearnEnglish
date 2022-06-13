@@ -47,6 +47,7 @@
                                 Width="30"
                                 Margin="10,0,0,0"
                                 IsChecked="{Binding Mix, Mode=TwoWay}"
+                                ToolTip="Перемешать слова"
                                 >
                                 <ToggleButton.BorderBrush >
                                     <SolidColorBrush Color="#FF707070" Opacity="0"/>
@@ -56,11 +57,13 @@
                                 </ToggleButton.Background>
                                 <Image Source="/Sources/Images/Mix.png"
                                        Stretch="Fill"/>
+                                
                             </ToggleButton>
                             <ToggleButton 
                                 Width="30"
                                 Margin="10,0,0,0"
                                 IsChecked="{Binding RusEng, Mode=TwoWay}"
+                                ToolTip="Переключить язык"
                                 >
                                 <ToggleButton.BorderBrush >
                                     <SolidColorBrush Color="#FF707070" Opacity="0"/>
