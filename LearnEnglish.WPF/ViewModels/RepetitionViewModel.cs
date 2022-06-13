@@ -25,7 +25,6 @@ namespace LearnEnglish.WPF.ViewModels
         private Lesson _les;
         private ObservableCollection<Lesson> _lessonWord;
 
-        //private bool _visibilityTranslate = false;
         private Visibility _visibleEng = Visibility.Visible;
         private Visibility _visibleRu = Visibility.Hidden;
 
@@ -75,11 +74,6 @@ namespace LearnEnglish.WPF.ViewModels
             get => _lessonWord;
             set => Set(ref _lessonWord, value);
         }
-        //public bool VisibilityTranslate
-        //{
-        //    get => _visibilityTranslate;
-        //    set => Set(ref _visibilityTranslate, value);
-        //}
         public Visibility VisibleEng
         {
             get => _visibleEng;
