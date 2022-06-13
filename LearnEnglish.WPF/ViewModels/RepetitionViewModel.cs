@@ -19,7 +19,7 @@ namespace LearnEnglish.WPF.ViewModels
             get => Les.Words.IndexOf(Word) >=0 ? Les.Words.IndexOf(Word) : 0;
         }
 
-        private bool _rnd;
+        private bool _mix;
         private DictionaryWord _word;
         private Lesson _les;
         private ObservableCollection<Lesson> _lessonWord;
@@ -46,10 +46,10 @@ namespace LearnEnglish.WPF.ViewModels
                 Word = Les.Words[0];
             }
         }
-        public bool Rnd
+        public bool Mix
         {
-            get => _rnd;
-            set => Set(ref _rnd, value);
+            get => _mix;
+            set => Set(ref _mix, value);
         }
         public ObservableCollection<Lesson> LessonWord
         {
@@ -70,7 +70,7 @@ namespace LearnEnglish.WPF.ViewModels
         {
             if (Word != null)
             {
-                if(Rnd)
+                if(Mix)
                     Word = Les.Words[_random.Next(Les.Words.Count)];
                 else
                 {
@@ -82,9 +82,9 @@ namespace LearnEnglish.WPF.ViewModels
         }
         private bool CanNextExecuted(object p)
         {
-            if (Rnd) return true;
+            if (Mix) return true;
 
-            if(!Rnd)
+            if(!Mix)
             {
                 if (Select == Les.Words.Count - 1)
                     return false;
@@ -99,7 +99,7 @@ namespace LearnEnglish.WPF.ViewModels
         {
             if (Word != null)
             {
-                if (Rnd)
+                if (Mix)
                     Word = Les.Words[_random.Next(Les.Words.Count)];
                 else
                 {
@@ -111,9 +111,9 @@ namespace LearnEnglish.WPF.ViewModels
         }
         private bool CanPreviousExecuted(object p)
         {
-            if (Rnd) return true;
+            if (Mix) return true;
 
-            if (!Rnd)
+            if (!Mix)
             {
                 if (Select == 0)
                     return false;

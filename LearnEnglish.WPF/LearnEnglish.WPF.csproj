@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Sources\Images\Left.png" />
+    <None Remove="Sources\Images\Mix.png" />
     <None Remove="Sources\Images\play.png" />
     <None Remove="Sources\Images\Right.png" />
     <None Remove="Sources\pictures\car.jpg" />
@@ -37,6 +38,7 @@
     <Resource Include="Sources\Images\Left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Sources\Images\Mix.png" />
     <Resource Include="Sources\Images\play.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

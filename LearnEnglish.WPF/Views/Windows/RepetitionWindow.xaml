@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearnEnglish.WPF.Views.Windows"
         mc:Ignorable="d"
-        Title="Повторение" Height="750" Width="800"
+        Title="Повторение" Height="760" Width="800"
         TextBlock.FontFamily="TimesNewRoman"
         xmlns:vm="clr-namespace:LearnEnglish.WPF.ViewModels"
         xmlns:mod="clr-namespace:LearnEnglish.WPF.Models"
@@ -43,6 +43,20 @@
                                     </DataTemplate>
                                 </ComboBox.Resources>
                             </ComboBox>
+                            <ToggleButton 
+                                Width="30"
+                                Margin="10,0,0,0"
+                                IsChecked="{Binding Mix, Mode=TwoWay}"
+                                >
+                                <ToggleButton.BorderBrush >
+                                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                                </ToggleButton.BorderBrush>
+                                <ToggleButton.Background>
+                                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                                </ToggleButton.Background>
+                                <Image Source="/Sources/Images/Mix.png"
+                                       Stretch="Fill"/>
+                            </ToggleButton>
                         </StackPanel>                       
                         <DockPanel>                            
                             <Button 
