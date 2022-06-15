@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearnEnglish.WPF.Views.Windows"
         mc:Ignorable="d"
-        Title="AddToDictionaryWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Добавление в словарь" Height="450" Width="800"
+        xmlns:vm="clr-namespace:LearnEnglish.WPF.ViewModels"
+        >
+
+
+    <Window.DataContext>
+        <vm:AddToDictionaryViewModel/>
+    </Window.DataContext>
+    
+    
+    
 </Window>
